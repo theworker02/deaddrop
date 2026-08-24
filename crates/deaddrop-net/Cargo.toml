@@ -27,7 +27,7 @@ deaddrop-core.workspace = true
 async-trait.workspace = true
 serde.workspace = true
 serde_json.workspace = true
-socket2 = "0.5"
+socket2 = "0.6"
 tokio.workspace = true
 tracing.workspace = true
 quinn = { workspace = true, optional = true }
