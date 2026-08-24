@@ -22,8 +22,6 @@ fn bind_scan(port: u16) -> std::io::Result<UdpSocket> {
         Some(socket2::Protocol::UDP),
     )?;
     socket.set_reuse_address(true)?;
-    #[cfg(unix)]
-    let _ = socket.set_reuse_port(true);
     socket.bind(&addr.into())?;
     socket.set_nonblocking(true)?;
     UdpSocket::from_std(socket.into())
