@@ -20,29 +20,38 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
+            bin_dir: target/release
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
+            bin_dir: target/release
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-          - os: macos-13
+            bin_dir: target/release
+          - os: macos-latest
             target: x86_64-apple-darwin
+            rust_target: x86_64-apple-darwin
+            bin_dir: target/x86_64-apple-darwin/release
           - os: macos-latest
             target: aarch64-apple-darwin
+            bin_dir: target/release
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust_target }}
       - name: Build product binaries
-        run: cargo build --locked --release -p deaddrop-app --bin dd --bin dd-daemon --bin dd-relay --bin dd-sim
+        run: cargo build --locked --release -p deaddrop-app --bin dd --bin dd-daemon --bin dd-relay --bin dd-sim ${{ matrix.rust_target && format('--target {0}', matrix.rust_target) || '' }}
       - name: Package (Unix)
         if: runner.os != 'Windows'
         run: |
           tag="${GITHUB_REF_NAME}"
           dest="deaddrop-${tag}-${{ matrix.target }}"
-          cp target/release/dd ./dd
-          cp target/release/dd-daemon ./dd-daemon
-          cp target/release/dd-relay ./dd-relay
-          cp target/release/dd-sim ./dd-sim
+          bin_dir="${{ matrix.bin_dir }}"
+          cp "${bin_dir}/dd" ./dd
+          cp "${bin_dir}/dd-daemon" ./dd-daemon
+          cp "${bin_dir}/dd-relay" ./dd-relay
+          cp "${bin_dir}/dd-sim" ./dd-sim
           tar -czf "${dest}.tar.gz" dd dd-daemon dd-relay dd-sim
           if command -v sha256sum >/dev/null; then
             sha256sum "${dest}.tar.gz" > "${dest}.tar.gz.sha256"
@@ -55,10 +64,11 @@ jobs:
         run: |
           $tag = $env:GITHUB_REF_NAME
           $dest = "deaddrop-$tag-${{ matrix.target }}"
-          Copy-Item target/release/dd.exe dd.exe
-          Copy-Item target/release/dd-daemon.exe dd-daemon.exe
-          Copy-Item target/release/dd-relay.exe dd-relay.exe
-          Copy-Item target/release/dd-sim.exe dd-sim.exe
+          $binDir = "${{ matrix.bin_dir }}"
+          Copy-Item "$binDir/dd.exe" dd.exe
+          Copy-Item "$binDir/dd-daemon.exe" dd-daemon.exe
+          Copy-Item "$binDir/dd-relay.exe" dd-relay.exe
+          Copy-Item "$binDir/dd-sim.exe" dd-sim.exe
           Compress-Archive -Path dd.exe,dd-daemon.exe,dd-relay.exe,dd-sim.exe -DestinationPath "$dest.zip"
           $hash = (Get-FileHash "$dest.zip" -Algorithm SHA256).Hash.ToLower()
           Set-Content -Encoding ascii "$dest.zip.sha256" "$hash  $dest.zip"
