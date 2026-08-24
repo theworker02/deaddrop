@@ -29,7 +29,7 @@ clap_complete = "4.5"
 directories = "6.0"
 ed25519-dalek = { version = "2.1", features = ["rand_core"] }
 hex = "0.4"
-hkdf = "0.12"
+hkdf = "0.13"
 hmac = "0.12"
 proptest = "1.6"
 quinn = "0.11"
