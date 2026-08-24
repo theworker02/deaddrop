@@ -1,0 +1,19 @@
+[package]
+name = "deaddrop-sdk"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+description = "Stable DeadDrop application SDK"
+
+[dependencies]
+deaddrop-core = { path = "../deaddrop-core" }
+deaddrop-net = { path = "../deaddrop-net" }
+
+[lints]
+workspace = true

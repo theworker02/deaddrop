@@ -1,0 +1,36 @@
+[package]
+name = "deaddrop-net"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+description = "DeadDrop networking: transports, discovery, sync, routing, scheduler"
+
+[features]
+default = ["quic", "lan"]
+quic = ["dep:quinn", "dep:rcgen", "dep:rustls"]
+lan = []
+bluetooth = []
+wifi-direct = []
+webrtc = []
+simulation = []
+
+[dependencies]
+deaddrop-core = { path = "../deaddrop-core" }
+async-trait.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+socket2 = "0.5"
+tokio.workspace = true
+tracing.workspace = true
+quinn = { workspace = true, optional = true }
+rcgen = { workspace = true, optional = true }
+rustls = { workspace = true, optional = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,4 @@
+{
+  "preimage_label": "ddp-receipt-v2",
+  "kinds": ["accepted", "stored", "forwarded", "delivered", "opened", "rejected", "expired"]
+}

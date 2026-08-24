@@ -1,0 +1,63 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/deaddrop-core",
+    "crates/deaddrop-net",
+    "crates/deaddrop-sdk",
+    "crates/deaddrop-app",
+]
+
+[workspace.package]
+version = "2.6.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/theworker02/deaddrop"
+homepage = "https://github.com/theworker02/deaddrop"
+authors = ["theworker02"]
+keywords = ["p2p", "dtn", "offline", "encryption"]
+categories = ["network-programming", "cryptography"]
+rust-version = "1.88"
+
+[workspace.dependencies]
+anyhow = "1.0"
+async-trait = "0.1"
+blake3 = "1.5"
+chacha20poly1305 = "0.10"
+ciborium = "0.2"
+clap = { version = "4.5", features = ["derive", "env"] }
+clap_complete = "4.5"
+directories = "6.0"
+ed25519-dalek = { version = "2.1", features = ["rand_core"] }
+hex = "0.4"
+hkdf = "0.12"
+hmac = "0.12"
+proptest = "1.6"
+quinn = "0.11"
+rand = "0.8"
+reed-solomon-erasure = "6.0"
+rcgen = "0.13"
+rusqlite = { version = "0.32", features = ["bundled"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_bytes = "0.11"
+serde_json = "1.0"
+sha2 = "0.10"
+thiserror = "2.0"
+tokio = { version = "1.43", features = ["full"] }
+toml = { version = "0.8", features = ["parse", "display"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+x25519-dalek = { version = "2.0", features = ["static_secrets"] }
+zeroize = { version = "1.8", features = ["zeroize_derive"] }
+zstd = "0.13"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[workspace.lints.clippy]
+too_many_arguments = "allow"
+collapsible_if = "allow"
+large_enum_variant = "allow"
+needless_range_loop = "allow"
+

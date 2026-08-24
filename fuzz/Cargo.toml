@@ -1,0 +1,22 @@
+[package]
+name = "deaddrop-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+deaddrop-core = { path = "../crates/deaddrop-core" }
+
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "cbor_message"
+path = "fuzz_targets/cbor_message.rs"
+test = false
+doc = false
+bench = false

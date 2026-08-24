@@ -1,0 +1,4 @@
+{
+  "manifest_preimage_label": "ddp-manifest-v2",
+  "chunking": ["fixed", "cdc-v1"]
+}

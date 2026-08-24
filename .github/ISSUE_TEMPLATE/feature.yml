@@ -1,0 +1,11 @@
+name: Feature
+description: A change that is not a bug
+labels: [enhancement]
+body:
+  - type: textarea
+    id: want
+    attributes:
+      label: What should change
+      description: Concrete two-computer or protocol behavior. Bluetooth / Wi-Fi Direct are not in scope.
+    validations:
+      required: true

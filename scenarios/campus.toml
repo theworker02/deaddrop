@@ -1,0 +1,13 @@
+nodes = 200
+duration = "24h"
+
+[mobility]
+model = "random-encounters"
+
+[network]
+contact_probability = 0.04
+
+[traffic]
+drops_per_hour = 20
+
+# Engineering model only. Not a claim about real campuses.

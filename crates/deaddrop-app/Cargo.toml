@@ -1,0 +1,74 @@
+[package]
+name = "deaddrop-app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+rust-version.workspace = true
+description = "DeadDrop CLI, daemon, relay, simulator, and examples"
+
+[[bin]]
+name = "dd"
+path = "src/bin/dd.rs"
+
+[[bin]]
+name = "dd-daemon"
+path = "src/bin/dd-daemon.rs"
+
+[[bin]]
+name = "dd-relay"
+path = "src/bin/dd-relay.rs"
+
+[[bin]]
+name = "dd-sim"
+path = "src/bin/dd-sim.rs"
+
+[[bin]]
+name = "dd-conformance"
+path = "src/bin/dd-conformance.rs"
+
+[[bin]]
+name = "dd-chaos"
+path = "src/bin/dd-chaos.rs"
+
+[[bin]]
+name = "dd-chat"
+path = "src/bin/dd-chat.rs"
+
+[[bin]]
+name = "dd-file"
+path = "src/bin/dd-file.rs"
+
+[dependencies]
+deaddrop-core = { path = "../deaddrop-core" }
+deaddrop-net = { path = "../deaddrop-net" }
+deaddrop-sdk = { path = "../deaddrop-sdk" }
+anyhow.workspace = true
+clap.workspace = true
+clap_complete.workspace = true
+directories.workspace = true
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+toml.workspace = true
+tracing-subscriber.workspace = true
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[package.metadata.binstall]
+pkg-url = "{ repo }/releases/download/v{ version }/deaddrop-v{ version }-{ target }.tar.gz"
+pkg-fmt = "tgz"
+bin-dir = "{ bin }{ binary-ext }"
+
+[package.metadata.binstall.overrides.x86_64-pc-windows-msvc]
+pkg-url = "{ repo }/releases/download/v{ version }/deaddrop-v{ version }-{ target }.zip"
+pkg-fmt = "zip"
+
+[lints]
+workspace = true

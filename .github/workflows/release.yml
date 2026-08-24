@@ -1,0 +1,134 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - os: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+          - os: macos-13
+            target: x86_64-apple-darwin
+          - os: macos-latest
+            target: aarch64-apple-darwin
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build product binaries
+        run: cargo build --locked --release -p deaddrop-app --bin dd --bin dd-daemon --bin dd-relay --bin dd-sim
+      - name: Package (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          dest="deaddrop-${tag}-${{ matrix.target }}"
+          cp target/release/dd ./dd
+          cp target/release/dd-daemon ./dd-daemon
+          cp target/release/dd-relay ./dd-relay
+          cp target/release/dd-sim ./dd-sim
+          tar -czf "${dest}.tar.gz" dd dd-daemon dd-relay dd-sim
+          if command -v sha256sum >/dev/null; then
+            sha256sum "${dest}.tar.gz" > "${dest}.tar.gz.sha256"
+          else
+            shasum -a 256 "${dest}.tar.gz" > "${dest}.tar.gz.sha256"
+          fi
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $tag = $env:GITHUB_REF_NAME
+          $dest = "deaddrop-$tag-${{ matrix.target }}"
+          Copy-Item target/release/dd.exe dd.exe
+          Copy-Item target/release/dd-daemon.exe dd-daemon.exe
+          Copy-Item target/release/dd-relay.exe dd-relay.exe
+          Copy-Item target/release/dd-sim.exe dd-sim.exe
+          Compress-Archive -Path dd.exe,dd-daemon.exe,dd-relay.exe,dd-sim.exe -DestinationPath "$dest.zip"
+          $hash = (Get-FileHash "$dest.zip" -Algorithm SHA256).Hash.ToLower()
+          Set-Content -Encoding ascii "$dest.zip.sha256" "$hash  $dest.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}
+          path: |
+            deaddrop-*.tar.gz
+            deaddrop-*.tar.gz.sha256
+            deaddrop-*.zip
+            deaddrop-*.zip.sha256
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          artifact-name: sbom
+          output-file: dist/deaddrop-${{ github.ref_name }}.spdx.json
+          upload-artifact: false
+      - uses: sigstore/cosign-installer@v3
+      - name: Sign artifacts (keyless Sigstore)
+        run: |
+          shopt -s nullglob
+          cd dist
+          for f in *.tar.gz *.zip *.spdx.json; do
+            [ -f "$f" ] || continue
+            case "$f" in
+              *.sha256) continue ;;
+            esac
+            cosign sign-blob --yes --bundle "${f}.cosign.bundle" "$f"
+          done
+      - name: Homebrew formula and winget manifests
+        run: |
+          set -euo pipefail
+          python3 packaging/gen-installers.py \
+            --version "${GITHUB_REF_NAME#v}" \
+            --dist dist \
+            --out dist
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: dist/*
+          body: |
+            Product binaries: `dd`, `dd-daemon`, `dd-relay`, `dd-sim`.
+
+            **Verify:** SHA-256 files plus Sigstore bundles (`*.cosign.bundle`). SBOM is `*.spdx.json`.
+
+            ```
+            cargo binstall --git https://github.com/theworker02/deaddrop deaddrop-app
+            ```
+
+            Homebrew (this formula, not core):
+
+            ```
+            brew install --formula https://github.com/theworker02/deaddrop/releases/download/${{ github.ref_name }}/deaddrop.rb
+            ```
+
+            Winget (local manifests from this release): download `winget-*` and `winget install --manifest <dir>`.
+
+            ```
+            dd --data-dir ./home init
+            dd --data-dir ./home daemon start --listen 0.0.0.0:7947
+            dd --data-dir ./home daemon install
+            ```
