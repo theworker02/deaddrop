@@ -5,6 +5,7 @@
 [![crates.io](https://img.shields.io/crates/v/deaddrop-sdk.svg)](https://crates.io/crates/deaddrop-sdk)
 [![docs.rs](https://docs.rs/deaddrop-sdk/badge.svg)](https://docs.rs/deaddrop-sdk)
 [![dd CLI](https://img.shields.io/crates/v/deaddrop-app.svg?label=deaddrop-app)](https://crates.io/crates/deaddrop-app)
+[![docs.rs app](https://docs.rs/deaddrop-app/badge.svg)](https://docs.rs/deaddrop-app)
 [![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE)
 
 **Encrypted delay-tolerant networking for computers that are not always online at the same time.**
@@ -43,7 +44,7 @@ The machines never need a simultaneous live session for the *application* to que
 cargo install deaddrop-app --locked
 ```
 
-SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net).
+SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app) · [docs.rs](https://docs.rs/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core) · [docs.rs](https://docs.rs/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net) · [docs.rs](https://docs.rs/deaddrop-net).
 
 **GitHub Releases** (Linux, Windows, and macOS, x86_64 and ARM64): [latest](https://github.com/theworker02/deaddrop/releases/latest). Archives include `dd`, `dd-daemon`, `dd-relay`, and `dd-sim`, SHA-256 checksums, an SPDX SBOM, and Sigstore bundles.
 
@@ -185,7 +186,7 @@ let dd = deaddrop_sdk::DeadDrop::open_dir(std::path::Path::new("./home"))?;
 dd.send(deaddrop_sdk::Recipient::from("laptop"), b"hello").await?;
 ```
 
-Applications should depend on `deaddrop-sdk` only.
+Applications should depend on [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) only. API docs: [docs.rs/deaddrop-sdk](https://docs.rs/deaddrop-sdk).
 
 ## Docs and spec
 
@@ -195,7 +196,10 @@ Applications should depend on `deaddrop-sdk` only.
 - [Security](SECURITY.md) · [Threat model](THREAT_MODEL.md)
 - [Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md)
 - [GitHub](https://github.com/theworker02/deaddrop) · [Releases](https://github.com/theworker02/deaddrop/releases/latest) · [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
-- [crates.io SDK](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk) · [crates.io CLI](https://crates.io/crates/deaddrop-app)
+- [deaddrop-sdk](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk)
+- [deaddrop-app](https://crates.io/crates/deaddrop-app) · [docs.rs](https://docs.rs/deaddrop-app)
+- [deaddrop-core](https://crates.io/crates/deaddrop-core) · [docs.rs](https://docs.rs/deaddrop-core)
+- [deaddrop-net](https://crates.io/crates/deaddrop-net) · [docs.rs](https://docs.rs/deaddrop-net)
 
 ## License
 
