@@ -76,14 +76,14 @@ impl ControlServer {
         let listener = TcpListener::bind("127.0.0.1:0").await?;
         let local = listener.local_addr()?;
         let token = random_token();
-        #[allow(unused_mut)]
-        let mut unix_socket = None;
         #[cfg(unix)]
-        {
+        let unix_socket = {
             let sock = root.join("control.sock");
             let _ = std::fs::remove_file(&sock);
-            unix_socket = Some(sock.display().to_string());
-        }
+            Some(sock.display().to_string())
+        };
+        #[cfg(not(unix))]
+        let unix_socket = None::<String>;
         let info = ControlInfo {
             listen: local.to_string(),
             token: token.clone(),

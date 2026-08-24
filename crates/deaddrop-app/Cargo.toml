@@ -10,6 +10,8 @@ keywords.workspace = true
 categories.workspace = true
 rust-version.workspace = true
 description = "DeadDrop CLI, daemon, relay, simulator, and examples"
+readme = "../../README.md"
+documentation = "https://docs.rs/deaddrop-app"
 
 [[bin]]
 name = "dd"
@@ -44,9 +46,9 @@ name = "dd-file"
 path = "src/bin/dd-file.rs"
 
 [dependencies]
-deaddrop-core = { path = "../deaddrop-core" }
-deaddrop-net = { path = "../deaddrop-net" }
-deaddrop-sdk = { path = "../deaddrop-sdk" }
+deaddrop-core.workspace = true
+deaddrop-net.workspace = true
+deaddrop-sdk.workspace = true
 anyhow.workspace = true
 clap.workspace = true
 clap_complete.workspace = true

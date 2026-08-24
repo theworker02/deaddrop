@@ -10,10 +10,12 @@ keywords.workspace = true
 categories.workspace = true
 rust-version.workspace = true
 description = "Stable DeadDrop application SDK"
+readme = "../../README.md"
+documentation = "https://docs.rs/deaddrop-sdk"
 
 [dependencies]
-deaddrop-core = { path = "../deaddrop-core" }
-deaddrop-net = { path = "../deaddrop-net" }
+deaddrop-core.workspace = true
+deaddrop-net.workspace = true
 
 [lints]
 workspace = true

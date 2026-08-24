@@ -1,5 +1,12 @@
 # DeadDrop
 
+[![CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/theworker02/deaddrop)](https://github.com/theworker02/deaddrop/releases/latest)
+[![crates.io](https://img.shields.io/crates/v/deaddrop-sdk.svg)](https://crates.io/crates/deaddrop-sdk)
+[![docs.rs](https://docs.rs/deaddrop-sdk/badge.svg)](https://docs.rs/deaddrop-sdk)
+[![dd CLI](https://img.shields.io/crates/v/deaddrop-app.svg?label=deaddrop-app)](https://crates.io/crates/deaddrop-app)
+[![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE)
+
 **Encrypted delay-tolerant networking for computers that are not always online at the same time.**
 
 Install it on a machine at home. Install it on a laptop. Send a file. When the two machines can reach each other — same Wi‑Fi, a USB stick, a visit later — the file moves. Neither side has to stay connected.
@@ -30,7 +37,15 @@ The machines never need a simultaneous live session for the *application* to que
 
 ## Install
 
-Download `dd` from [GitHub Releases](https://github.com/theworker02/deaddrop/releases) (Linux, Windows, and macOS, x86_64 and ARM64). Archives include `dd`, `dd-daemon`, `dd-relay`, and `dd-sim`, SHA-256 checksums, an SPDX SBOM, and Sigstore bundles.
+**crates.io** (Rust toolchain):
+
+```bash
+cargo install deaddrop-app --locked
+```
+
+SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net).
+
+**GitHub Releases** (Linux, Windows, and macOS, x86_64 and ARM64): [latest](https://github.com/theworker02/deaddrop/releases/latest). Archives include `dd`, `dd-daemon`, `dd-relay`, and `dd-sim`, SHA-256 checksums, an SPDX SBOM, and Sigstore bundles.
 
 ```bash
 # from a release (needs cargo-binstall)
@@ -42,7 +57,7 @@ brew install --formula https://github.com/theworker02/deaddrop/releases/latest/d
 
 Windows: download the `x86_64-pc-windows-msvc.zip` or the `winget/` manifests from the same release and run `winget install --manifest <dir>`.
 
-From source:
+From this repo:
 
 ```bash
 git clone https://github.com/theworker02/deaddrop
@@ -179,6 +194,8 @@ Applications should depend on `deaddrop-sdk` only.
 - [Protocol](spec/DDP-0000-overview.md)
 - [Security](SECURITY.md) · [Threat model](THREAT_MODEL.md)
 - [Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md)
+- [GitHub](https://github.com/theworker02/deaddrop) · [Releases](https://github.com/theworker02/deaddrop/releases/latest) · [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
+- [crates.io SDK](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk) · [crates.io CLI](https://crates.io/crates/deaddrop-app)
 
 ## License
 

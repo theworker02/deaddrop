@@ -10,6 +10,8 @@ keywords.workspace = true
 categories.workspace = true
 rust-version.workspace = true
 description = "DeadDrop networking: transports, discovery, sync, routing, scheduler"
+readme = "../../README.md"
+documentation = "https://docs.rs/deaddrop-net"
 
 [features]
 default = ["quic", "lan"]
@@ -21,7 +23,7 @@ webrtc = []
 simulation = []
 
 [dependencies]
-deaddrop-core = { path = "../deaddrop-core" }
+deaddrop-core.workspace = true
 async-trait.workspace = true
 serde.workspace = true
 serde_json.workspace = true

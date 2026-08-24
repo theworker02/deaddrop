@@ -1,6 +1,10 @@
 [advisories]
 version = 2
 yanked = "warn"
+ignore = [
+    # Transitive via parking_lot; not something this workspace can replace.
+    "RUSTSEC-2024-0384",
+]
 
 [licenses]
 version = 2
@@ -18,6 +22,8 @@ allow = [
     "OpenSSL",
     "CC0-1.0",
     "BSL-1.0",
+    "MPL-2.0",
+    "CDLA-Permissive-2.0",
 ]
 
 [bans]
