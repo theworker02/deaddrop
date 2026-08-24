@@ -33,7 +33,7 @@ hkdf = "0.12"
 hmac = "0.12"
 proptest = "1.6"
 quinn = "0.11"
-rand = "0.8"
+rand = "0.10"
 reed-solomon-erasure = "6.0"
 rcgen = "0.13"
 rusqlite = { version = "0.32", features = ["bundled"] }
