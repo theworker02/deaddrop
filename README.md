@@ -1,4 +1,4 @@
-# DeadDrop
+﻿# DeadDrop
 
 [![CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/theworker02/deaddrop)](https://github.com/theworker02/deaddrop/releases/latest)
@@ -6,11 +6,11 @@
 [![docs.rs](https://docs.rs/deaddrop-sdk/badge.svg)](https://docs.rs/deaddrop-sdk)
 [![dd CLI](https://img.shields.io/crates/v/deaddrop-app.svg?label=deaddrop-app)](https://crates.io/crates/deaddrop-app)
 [![docs.rs app](https://docs.rs/deaddrop-app/badge.svg)](https://docs.rs/deaddrop-app)
-[![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Proprietary%20(source--available)%20OR%20Apache--2.0-blue.svg)](LICENSE)
 
 **Encrypted delay-tolerant networking for computers that are not always online at the same time.**
 
-Install it on a machine at home. Install it on a laptop. Send a file. When the two machines can reach each other — same Wi‑Fi, a USB stick, a visit later — the file moves. Neither side has to stay connected.
+Install it on a machine at home. Install it on a laptop. Send a file. When the two machines can reach each other â€” same Wiâ€‘Fi, a USB stick, a visit later â€” the file moves. Neither side has to stay connected.
 
 No account. No cloud. No assumption that both endpoints are up at once.
 
@@ -44,7 +44,7 @@ The machines never need a simultaneous live session for the *application* to que
 cargo install deaddrop-app --locked
 ```
 
-SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app) · [docs.rs](https://docs.rs/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core) · [docs.rs](https://docs.rs/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net) · [docs.rs](https://docs.rs/deaddrop-net).
+SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) Â· [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app) Â· [docs.rs](https://docs.rs/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core) Â· [docs.rs](https://docs.rs/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net) Â· [docs.rs](https://docs.rs/deaddrop-net).
 
 **GitHub Releases** (Linux, Windows, and macOS, x86_64 and ARM64): [latest](https://github.com/theworker02/deaddrop/releases/latest). Archives include `dd`, `dd-daemon`, `dd-relay`, and `dd-sim`, SHA-256 checksums, an SPDX SBOM, and Sigstore bundles.
 
@@ -84,7 +84,7 @@ dd --data-dir ./home daemon start --listen 0.0.0.0:7947
 dd --data-dir ./home daemon install   # optional: start at login (systemd user / LaunchAgent / Windows logon task)
 ```
 
-Copy `./home/identity.pub.ddcontact` to the other computer (shared folder, email to yourself, USB — anything).
+Copy `./home/identity.pub.ddcontact` to the other computer (shared folder, email to yourself, USB â€” anything).
 
 **Computer B** (the one that sends, e.g. the laptop):
 
@@ -124,7 +124,7 @@ dd --data-dir ./home import E:/pending.ddrop
 dd --data-dir ./home receive
 ```
 
-That is the same protocol object as a LAN transfer — stored, carried, imported, decrypted.
+That is the same protocol object as a LAN transfer â€” stored, carried, imported, decrypted.
 
 ## What this is (and is not)
 
@@ -139,7 +139,7 @@ That is the same protocol object as a LAN transfer — stored, carried, imported
 Wire protocol: **DDP/2**. Crate version: **2.6.0**.
 
 ```
-Application  →  deaddrop-sdk  →  deaddrop-net  →  deaddrop-core
+Application  â†’  deaddrop-sdk  â†’  deaddrop-net  â†’  deaddrop-core
 ```
 
 ## Architecture
@@ -153,7 +153,7 @@ flowchart TB
   App --> SDK --> Net --> Core
 ```
 
-Delay-tolerant path — none of these hops need to exist at the same moment:
+Delay-tolerant path â€” none of these hops need to exist at the same moment:
 
 ```mermaid
 sequenceDiagram
@@ -193,14 +193,15 @@ Applications should depend on [`deaddrop-sdk`](https://crates.io/crates/deaddrop
 - [Getting started](docs/getting-started.md)
 - [Two computers](examples/two-computers.md)
 - [Protocol](spec/DDP-0000-overview.md)
-- [Security](SECURITY.md) · [Threat model](THREAT_MODEL.md)
-- [Contributing](CONTRIBUTING.md) · [Roadmap](ROADMAP.md)
-- [GitHub](https://github.com/theworker02/deaddrop) · [Releases](https://github.com/theworker02/deaddrop/releases/latest) · [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
-- [deaddrop-sdk](https://crates.io/crates/deaddrop-sdk) · [docs.rs](https://docs.rs/deaddrop-sdk)
-- [deaddrop-app](https://crates.io/crates/deaddrop-app) · [docs.rs](https://docs.rs/deaddrop-app)
-- [deaddrop-core](https://crates.io/crates/deaddrop-core) · [docs.rs](https://docs.rs/deaddrop-core)
-- [deaddrop-net](https://crates.io/crates/deaddrop-net) · [docs.rs](https://docs.rs/deaddrop-net)
+- [Security](SECURITY.md) Â· [Threat model](THREAT_MODEL.md)
+- [Contributing](CONTRIBUTING.md) Â· [Roadmap](ROADMAP.md)
+- [GitHub](https://github.com/theworker02/deaddrop) Â· [Releases](https://github.com/theworker02/deaddrop/releases/latest) Â· [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
+- [deaddrop-sdk](https://crates.io/crates/deaddrop-sdk) Â· [docs.rs](https://docs.rs/deaddrop-sdk)
+- [deaddrop-app](https://crates.io/crates/deaddrop-app) Â· [docs.rs](https://docs.rs/deaddrop-app)
+- [deaddrop-core](https://crates.io/crates/deaddrop-core) Â· [docs.rs](https://docs.rs/deaddrop-core)
+- [deaddrop-net](https://crates.io/crates/deaddrop-net) Â· [docs.rs](https://docs.rs/deaddrop-net)
 
 ## License
 
-MIT OR Apache-2.0
+**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+

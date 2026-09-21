@@ -1,4 +1,4 @@
-[workspace]
+﻿[workspace]
 resolver = "2"
 members = [
     "crates/deaddrop-core",
@@ -10,7 +10,7 @@ members = [
 [workspace.package]
 version = "2.6.0"
 edition = "2024"
-license = "MIT OR Apache-2.0"
+license = "LicenseRef-Proprietary"
 repository = "https://github.com/theworker02/deaddrop"
 homepage = "https://github.com/theworker02/deaddrop"
 authors = ["theworker02"]
