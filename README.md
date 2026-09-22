@@ -1,4 +1,12 @@
-﻿# DeadDrop
+# DeadDrop
+
+
+---
+
+## License & acquisition
+
+This project is **proprietary**. Production use, redistribution, and commercial deployment require a written commercial license or completed acquisition. See [LICENSE](./LICENSE) and [ACQUISITION.md](./ACQUISITION.md). Contact [@theworker02](https://github.com/theworker02).
+
 
 [![CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/theworker02/deaddrop)](https://github.com/theworker02/deaddrop/releases/latest)
@@ -204,4 +212,3 @@ Applications should depend on [`deaddrop-sdk`](https://crates.io/crates/deaddrop
 ## License
 
 **Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
-
