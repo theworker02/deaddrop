@@ -1,4 +1,4 @@
-﻿[workspace]
+[workspace]
 resolver = "2"
 members = [
     "crates/deaddrop-core",
@@ -11,6 +11,7 @@ members = [
 version = "2.6.0"
 edition = "2024"
 license = "LicenseRef-Proprietary"
+license-file = "LICENSE"
 repository = "https://github.com/theworker02/deaddrop"
 homepage = "https://github.com/theworker02/deaddrop"
 authors = ["theworker02"]
@@ -63,4 +64,3 @@ too_many_arguments = "allow"
 collapsible_if = "allow"
 large_enum_variant = "allow"
 needless_range_loop = "allow"
-
