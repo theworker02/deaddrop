@@ -18,7 +18,7 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 
 **Encrypted delay-tolerant networking for computers that are not always online at the same time.**
 
-Install it on a machine at home. Install it on a laptop. Send a file. When the two machines can reach each other â€” same Wiâ€‘Fi, a USB stick, a visit later â€” the file moves. Neither side has to stay connected.
+Install it on a machine at home. Install it on a laptop. Send a file. When the two machines can reach each other Ã¢â‚¬â€ same WiÃ¢â‚¬â€˜Fi, a USB stick, a visit later Ã¢â‚¬â€ the file moves. Neither side has to stay connected.
 
 No account. No cloud. No assumption that both endpoints are up at once.
 
@@ -52,7 +52,7 @@ The machines never need a simultaneous live session for the *application* to que
 cargo install deaddrop-app --locked
 ```
 
-SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) Â· [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app) Â· [docs.rs](https://docs.rs/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core) Â· [docs.rs](https://docs.rs/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net) Â· [docs.rs](https://docs.rs/deaddrop-net).
+SDK: [`deaddrop-sdk`](https://crates.io/crates/deaddrop-sdk) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-sdk). CLI crate: [`deaddrop-app`](https://crates.io/crates/deaddrop-app) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-app). Also [`deaddrop-core`](https://crates.io/crates/deaddrop-core) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-core), [`deaddrop-net`](https://crates.io/crates/deaddrop-net) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-net).
 
 **GitHub Releases** (Linux, Windows, and macOS, x86_64 and ARM64): [latest](https://github.com/theworker02/deaddrop/releases/latest). Archives include `dd`, `dd-daemon`, `dd-relay`, and `dd-sim`, SHA-256 checksums, an SPDX SBOM, and Sigstore bundles.
 
@@ -92,7 +92,7 @@ dd --data-dir ./home daemon start --listen 0.0.0.0:7947
 dd --data-dir ./home daemon install   # optional: start at login (systemd user / LaunchAgent / Windows logon task)
 ```
 
-Copy `./home/identity.pub.ddcontact` to the other computer (shared folder, email to yourself, USB â€” anything).
+Copy `./home/identity.pub.ddcontact` to the other computer (shared folder, email to yourself, USB Ã¢â‚¬â€ anything).
 
 **Computer B** (the one that sends, e.g. the laptop):
 
@@ -132,7 +132,7 @@ dd --data-dir ./home import E:/pending.ddrop
 dd --data-dir ./home receive
 ```
 
-That is the same protocol object as a LAN transfer â€” stored, carried, imported, decrypted.
+That is the same protocol object as a LAN transfer Ã¢â‚¬â€ stored, carried, imported, decrypted.
 
 ## What this is (and is not)
 
@@ -147,7 +147,7 @@ That is the same protocol object as a LAN transfer â€” stored, carried, imp
 Wire protocol: **DDP/2**. Crate version: **2.6.0**.
 
 ```
-Application  â†’  deaddrop-sdk  â†’  deaddrop-net  â†’  deaddrop-core
+Application  Ã¢â€ â€™  deaddrop-sdk  Ã¢â€ â€™  deaddrop-net  Ã¢â€ â€™  deaddrop-core
 ```
 
 ## Architecture
@@ -161,7 +161,7 @@ flowchart TB
   App --> SDK --> Net --> Core
 ```
 
-Delay-tolerant path â€” none of these hops need to exist at the same moment:
+Delay-tolerant path Ã¢â‚¬â€ none of these hops need to exist at the same moment:
 
 ```mermaid
 sequenceDiagram
@@ -201,14 +201,18 @@ Applications should depend on [`deaddrop-sdk`](https://crates.io/crates/deaddrop
 - [Getting started](docs/getting-started.md)
 - [Two computers](examples/two-computers.md)
 - [Protocol](spec/DDP-0000-overview.md)
-- [Security](SECURITY.md) Â· [Threat model](THREAT_MODEL.md)
-- [Contributing](CONTRIBUTING.md) Â· [Roadmap](ROADMAP.md)
-- [GitHub](https://github.com/theworker02/deaddrop) Â· [Releases](https://github.com/theworker02/deaddrop/releases/latest) Â· [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
-- [deaddrop-sdk](https://crates.io/crates/deaddrop-sdk) Â· [docs.rs](https://docs.rs/deaddrop-sdk)
-- [deaddrop-app](https://crates.io/crates/deaddrop-app) Â· [docs.rs](https://docs.rs/deaddrop-app)
-- [deaddrop-core](https://crates.io/crates/deaddrop-core) Â· [docs.rs](https://docs.rs/deaddrop-core)
-- [deaddrop-net](https://crates.io/crates/deaddrop-net) Â· [docs.rs](https://docs.rs/deaddrop-net)
+- [Security](SECURITY.md) Ã‚Â· [Threat model](THREAT_MODEL.md)
+- [Contributing](CONTRIBUTING.md) Ã‚Â· [Roadmap](ROADMAP.md)
+- [GitHub](https://github.com/theworker02/deaddrop) Ã‚Â· [Releases](https://github.com/theworker02/deaddrop/releases/latest) Ã‚Â· [CI](https://github.com/theworker02/deaddrop/actions/workflows/ci.yml)
+- [deaddrop-sdk](https://crates.io/crates/deaddrop-sdk) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-sdk)
+- [deaddrop-app](https://crates.io/crates/deaddrop-app) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-app)
+- [deaddrop-core](https://crates.io/crates/deaddrop-core) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-core)
+- [deaddrop-net](https://crates.io/crates/deaddrop-net) Ã‚Â· [docs.rs](https://docs.rs/deaddrop-net)
 
 ## License
 
-**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+**Source-available proprietary** â€” evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+
+## Acquisition diligence
+
+Buyer-facing diligence materials live in [docs/acquisition/](./docs/acquisition/). Commercial licensing contact path: [COMMERCIAL.md](./COMMERCIAL.md).
