@@ -1,4 +1,4 @@
-﻿[workspace]
+[workspace]
 resolver = "2"
 members = [
     "crates/deaddrop-core",
@@ -36,7 +36,7 @@ quinn = "0.11"
 rand = "0.8"
 reed-solomon-erasure = "6.0"
 rcgen = "0.13"
-rusqlite = { version = "0.32", features = ["bundled"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
 rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_bytes = "0.11"
