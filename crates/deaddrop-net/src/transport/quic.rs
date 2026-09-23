@@ -13,7 +13,7 @@ pub fn make_server_config() -> Result<(ServerConfig, CertificateDer<'static>)> {
     let cert = rcgen::generate_simple_self_signed(vec!["localhost".into()])
         .map_err(|e| DdError::crypto(e.to_string()))?;
     let cert_der = CertificateDer::from(cert.cert.der().to_vec());
-    let key = PrivatePkcs8KeyDer::from(cert.key_pair.serialize_der());
+    let key = PrivatePkcs8KeyDer::from(cert.signing_key.serialize_der());
     let mut server = ServerConfig::with_single_cert(vec![cert_der.clone()], key.into())
         .map_err(|e| DdError::crypto(e.to_string()))?;
     let _ = &mut server;
