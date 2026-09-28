@@ -50,7 +50,7 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 x25519-dalek = { version = "2.0", features = ["static_secrets"] }
 zeroize = { version = "1.8", features = ["zeroize_derive"] }
-zstd = "0.13"
+zstd = "0.14"
 deaddrop-core = { path = "crates/deaddrop-core", version = "2.6.0" }
 deaddrop-net = { path = "crates/deaddrop-net", version = "2.6.0" }
 deaddrop-sdk = { path = "crates/deaddrop-sdk", version = "2.6.0" }
